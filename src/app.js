@@ -4,7 +4,7 @@ const app = express();
 const mongoClient = require('./components/mongoclient')
 
 
-const port = 8080;
+const port = 3000;
 
 mongoClient.connect();
 app.use(express.json());
