@@ -17,7 +17,7 @@ exports.connect = async () => {
 }
 
 exports.findByDate = async (startDate, endDate) => {
-    return client
+    const response = await client
         .db(config.mongo.dbName)
         .collection(config.mongo.collection)
         .find({
@@ -26,4 +26,8 @@ exports.findByDate = async (startDate, endDate) => {
                 "$lt": new Date(endDate)
             }
         })
+        .toArray();
+    console.log('--------------------------======--------------------');
+    console.log(response);
+    return response;
 }
