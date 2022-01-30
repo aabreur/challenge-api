@@ -8,10 +8,11 @@ exports.connect = async () => {
     // Connect the client to the server, this should happen only when app starts
     try {
         await client.connect();
-        console.log("Connection to MongoDB successfully established.")
+        console.log("Connection to MongoDB successfully established.");
     } catch (error) {
         console.log("There was an error when connecting to MongoDB");
         console.log(error);
+        throw error;
     }
 }
 
