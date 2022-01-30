@@ -3,14 +3,18 @@ const router = require('./routes');
 const app = express();
 const mongoClient = require('./components/mongoclient')
 
+// connect to mongoDB
+await mongoClient.connect();
 
-const port = 3000;
+// NODE_ENV variable is being set to production on ECS container
+const port = process.env.NODE_ENV == 'production'
+    ? 80
+    : 3000
 
-mongoClient.connect();
 app.use(express.json());
 app.use(router);
 
 // start the Express server
 app.listen( port, () => {
-    console.log( `server started at http://localhost:${ port }` );
+    console.log( `server started at port ${ port }` );
 } );

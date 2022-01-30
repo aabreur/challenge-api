@@ -10,7 +10,7 @@ exports.connect = async () => {
         await client.connect();
         console.log("Connection to MongoDB successfully established.")
     } catch (error) {
-        console.log("There was an error when trying to connect to MongoDB");
+        console.log("There was an error when connecting to MongoDB");
         console.log(error);
     }
 }
